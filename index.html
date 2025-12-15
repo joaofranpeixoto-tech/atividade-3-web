@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Sistema de Temas</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 40px;
+        }
+        button {
+            margin: 5px 0;
+            padding: 8px 12px;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Gerenciamento de Temas</h1>
+
+    <button onclick="listarTemas()">Listar Temas</button>
+    <pre id="resultado"></pre>
+
+    <script>
+        const API_URL = "http://localhost:3000"; 
+        // depois troque para a URL do Render
+
+        async function listarTemas() {
+            const res = await fetch(`${API_URL}/tema`);
+            const dados = await res.json();
+            document.getElementById("resultado").textContent =
+                JSON.stringify(dados, null, 2);
+        }
+    </script>
+
+</body>
+</html>
